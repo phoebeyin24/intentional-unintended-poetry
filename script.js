@@ -13,7 +13,7 @@
 //variables for player
 let xpos = 1100;
 let ypos = 600;
-let movespd = 15;
+let movespd = 12;
 let playerwidth = 50;
 let playerheight = 50;
 
@@ -83,7 +83,7 @@ function preload(){
 
 function setup() {
 	
-	frameRate(20);
+	frameRate(18);
 	createCanvas(1280, 720);
 	imageMode(CENTER);
 	textAlign(CENTER);
@@ -102,7 +102,7 @@ function setup() {
 	heart = new obstacle(width/2,300,80,80)
 	exit2 = new exit(width/2, 620,130,130)
 	for(let i = 0; i<100; i++){
-    stars[i] = new star(random(width),random(height),random(-PI,PI),random(0.1,1.2));
+    stars[i] = new star(random(width),random(height),random(-PI,PI),random(0.1,2));
 
   }
 	//instances on page 3

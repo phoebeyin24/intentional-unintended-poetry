@@ -12,7 +12,7 @@ function type(txt,x,y) {
 	}
 	
 }
-
+//a function to control the background images between pages
 function imgcontrol(){
 	if (page == 1){
 		image(page1,width/2,height/2,1280,720);
@@ -40,7 +40,7 @@ function imgcontrol(){
 // 	}
 // }
 
-
+//a function called on page 1 to show the title
 function start(){
 	fill(0)
 	rect(width/2,height/2,1280,720)
