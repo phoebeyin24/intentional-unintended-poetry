@@ -33,7 +33,9 @@ function imgcontrol(){
 // 		  typingsd.stop();
 // 		}
 // 	  else{
-// 		  typingsd.loop();
+// 		  typingsd.playMode('restart')
+// 		  typingsd.play();
+		  
 // 		}
 // 	}else{
 // 		typingsd.stop();

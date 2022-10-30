@@ -5,10 +5,12 @@
 
 function userCollide(){
 	//draw player sprite page 1
-	if (page == 1 || page == 2 || page == 3){
+	if (page == 1 || page == 2){
 		image(ghost,xpos,ypos,80,80);
 	}else if (page == 4){
 		image(umbrella,xpos,ypos,80,80);
+	}else if (page ==3){
+		image(darkghost,xpos,ypos,80,80);
 	}
 	
 	//uses keyIsDown to record key input, player moves according to movespd variable

@@ -56,6 +56,7 @@ let exit2;
 let umbrella;
 let typingsd;
 let window1;
+let darkghost;
 
 
 function preload(){
@@ -74,7 +75,8 @@ function preload(){
 	e3 = loadImage('images/exit3.png')
 	umbrella = loadImage('images/umbrella.png')
 	window1 = loadImage('images/window1.png')
-	//typingsd = loadSound("click.wav");
+	darkghost = loadImage('images/darkghost.png')
+	typingsd = loadSound("sound/click.wav");
 	
 	music = loadSound('sound/thecodeofmyheart.mp3')
 	
@@ -116,7 +118,6 @@ function setup() {
 function draw() {
 	imgcontrol();
 	//sounds();
-	
 	//call usercollide function
 	userCollide();
 	if (page == 0){
