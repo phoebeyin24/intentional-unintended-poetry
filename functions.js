@@ -23,6 +23,16 @@ function imgcontrol(){
 		image(page3,width/2,height/2,1280,720)
 	}else if (page == 4){
 		image(page4,width/2,height/2,1280,720);	
+	}else if (page ==5){
+		background(50);
+	}else if (page ==6){
+		background(20);
+	}else if (page == 7){
+		background(30)
+	}else if (page == 8){
+		background(40);
+	}else if (page ==9){
+		background (0);
 	}
 }
 
@@ -42,7 +52,7 @@ function imgcontrol(){
 // 	}
 // }
 
-//a function called on page 1 to show the title
+//a function called on page 0 to show the title
 function start(){
 	fill(0)
 	rect(width/2,height/2,1280,720)
@@ -53,6 +63,50 @@ function start(){
 		console.log("enter");
 	}
 }
+
+//only for testing
+function testing(){
+	if (keyIsDown(49)){
+		page = 1;
+	}else if (keyIsDown(50)){
+		page = 2;
+	}else if (keyIsDown(51)){
+		page = 3;
+	}else if (keyIsDown(52)){
+		page = 4;
+	}else if (keyIsDown(53)){
+		page = 5;
+	}else if (keyIsDown(54)){
+		page = 6;
+	}else if (keyIsDown(55)){
+		page = 7;
+	}else if (keyIsDown(56)){
+		page = 8;
+	}else if (keyIsDown(57)){
+		page = 9;
+	}
+}
+
+function drawStreak() {
+	let y = floor(random(height));
+	let h = floor(random(20, 30)); //floor(random(1, 100));
+	let xChange = floor(map(noise(y * yNoiseChange, (mouseY * mouseYNoiseChange + frameCount) * timeNoiseChange), 0.06, 0.94, -maxXChange, maxXChange)); 
+	let yChange = floor(xChange * (maxYChange / maxXChange) * random() > 0.1 ? -1 : 1);
+	if (random() < dist(pmouseX, pmouseY, mouseX, mouseY) / width * 0.3 + 0.0015) filter(POSTERIZE, floor(random(2, 5)));
+	image(video, xChange - maxXChange+790, -maxYChange + y + yChange +120, video.width, h, 0, y, video.width, h);
+}
+
+
+function countdown(){
+	// if the frameCount is divisible by 18, then a second has passed. it will stop at 0
+	if (frameCount % 18 == 0 && timer > 0) {
+		timer --;
+	}
+	if (timer == 0) {
+		page = 10;
+	}
+}
+
 
 	
 

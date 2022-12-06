@@ -13,7 +13,7 @@
 //variables for player
 let xpos = 1100;
 let ypos = 600;
-let movespd = 12;
+let movespd = 30;
 let playerwidth = 50;
 let playerheight = 50;
 
@@ -39,7 +39,26 @@ let n = 0
 
 //page 4 variables
 let text401 = false;
-let bump401 = false;
+//let bump401 = false;
+
+//page 6 variables
+let text601 = false;
+let text602 = false;
+
+//page 8 variables
+let text801 = false;
+let bump801 = false;
+
+//page 9 variables
+let video;
+const maxXChange = 125;
+const maxYChange = 5;
+const yNoiseChange = 0.01;
+const mouseYNoiseChange = 0.3;
+const timeNoiseChange = 0.013;
+let timer = 10;
+
+
 
 //loading image & sound variables
 let page1;
@@ -91,32 +110,60 @@ function setup() {
 	textAlign(CENTER);
 	rectMode(CENTER); 
 	noStroke();
+	video = createCapture(VIDEO);
+	video.size(1000,1000);
+	video.hide(); 
+	background(0);
 	
 
 	
 	//instaces on page 1
-	obs1 = new obstacle(700,600,120,120)
-	obs2 = new obstacle(400,350,70,70)
-	obs3 = new obstacle(820,200,50,50)
-	exit1 = new exit(645,75,60,60)
+	obs1 = new obstacle(700,600,120,120);
+	obs2 = new obstacle(400,350,70,70);
+	obs3 = new obstacle(820,200,50,50);
+	exit1 = new exit(645,75,60,60);
 	
   //instances on page 2
-	heart = new obstacle(width/2,300,80,80)
-	exit2 = new exit(width/2, 620,130,130)
+	heart = new obstacle(width/2,300,80,80);
+	exit2 = new exit(width/2, 620,130,130);
 	for(let i = 0; i<100; i++){
     stars[i] = new star(random(width),random(height),random(-PI,PI),random(0.1,2));
 
   }
 	//instances on page 3
-	exit3 = new exit(100,80,80,80)
+	exit3 = new exit(100,80,80,80);
 	
 	//instances on page 4
-	puddle = new obstacle(1000,550,300,300)
+	puddle = new obstacle(1000,550,300,300);
+	exit4 = new exit(1200,100,60,80);
+
+	//instances on page 5
+	exit5 = new exit(1100,650,200,300);
+
+	//instances on page 6
+	shark1 = new obstacle(400,500,100,100);
+	shark2 = new obstacle(800,500,100,100);
+	exit6 = new exit(50,50,50,50);
+
+	//instances on page 7
+	exit7 = new exit(1100,600,100,100);
+
+	//instances on page 8
+	someone = new obstacle(width/2,600,50,50);
+	exit8 = new exit(1000,100,70,70);
+
+
+
 }
 
 
+
 function draw() {
-	imgcontrol();
+	//function for faster access to pages when testing
+	testing();
+	
+	imgcontrol();	
+	
 	//sounds();
 	//call usercollide function
 	userCollide();
@@ -129,15 +176,16 @@ function draw() {
 		   }
 		}
 	}
-	//if page is one, display instances on page one
+	//if page is one, display instances on page one, "lotus and buddha"
 	if (page == 1){
+		image(ghost,xpos,ypos,80,80);
 		obs1.display();
 		obs2.display();
 		obs3.display();
 		exit1.display();
 		if (box !=false){
-		fill(0);
-		rect(width/2,height/2,600,200);
+			fill(0);
+			rect(width/2,height/2,600,200);
 		}	
 		//text appears depends on which object player collides with
 		if (text01 == true){
@@ -151,21 +199,25 @@ function draw() {
 			type('because of your appearance.',width/2,height/2);
 		}
 	}
-	//displays objects on page 2
+
+
+	//displays objects on page 2, "heartbreak"
 	if (page == 2){
+		image(ghost,xpos,ypos,80,80);
 		heart.display();
 		exit2.display();
 		if (box !=false){
-		fill(0);
-		rect(width/2,height/2,800,200);
+			fill(0);
+			rect(width/2,height/2,800,200);
 		}	
 		if (text201 == true){
 			type("Later, I found that you belong to the gazes\n\nof every eye...So I love you more; and then I\n\nfound that no one could ever possess you,\n\nso I love you no more.",width/2, height/2-45);
 		}
 	}
 	
-	//displays objects on page 3
+	//displays objects on page 3, "floating stars"
 	if (page == 3){
+		image(darkghost,xpos,ypos,80,80);
 		for (let i = 0; i < stars.length; i++){
     stars[i].display();
 		stars[i].move();
@@ -177,18 +229,90 @@ function draw() {
 		type("I loved you for so long without a reason!\n\nStars...",width/2,height/2-10)
 	}
 	
-	//displays objects on page 4
-  if (page == 4){
+	//displays objects on page 4，"human shaped pool"
+    if (page == 4){
 		puddle.display();
+		exit4.display();
+		image(umbrella,xpos,ypos,80,80);
 		if (box !=false){
-		fill(0);
-		rect(width/2,height/2,800,200);
+			fill(0);
+			rect(width/2,height/2,800,200);
 		}	
 		if (text401 == true){
 			type("It would be a bit scary if it really\n\nwere a pool of clear water.\n\nBut the world is so crowded...\n\nmother.",width/2, height/2-48);
 		}
 	}
-	//console.log(n)
+
+	//displays objects on page 5, "ladder to home"
+
+    if (page == 5){
+		exit5.display();
+    	image(ghost,xpos,ypos,80,80);
+		fill(0);
+		rect(width/2,height/2,600,150);
+		type("The road to home...\n\nThe road to home...",width/2,height/2-10)
+    }
+    
+	//displays objects on page 6, "shark museum"
+    if (page == 6){
+		shark1.display();
+		shark2.display();
+		exit6.display();
+		image(ghost,xpos,ypos,80,80);
+		if (box !=false){
+			fill(0);
+			rect(width/2,height/2,600,150);
+		}
+		if (text602 == true){
+			type("You want me to turn back.\n\nIt is my choice;",width/2,height/2-10)
+		}
+		if (text601 == true){
+			type("You are shouting by the sea,\n\ndrowning me\n\nover and over again.",width/2,height/2-30)
+		}
+	}
 	
-	
+	//displays objects on page 7, "hide and seek"
+	if (page == 7){
+		exit7.display();
+		image(ghost,xpos,ypos,80,80);
+	}
+
+
+	//displays objects on page 8, "moony"
+	if (page==8){
+		someone.display();
+		exit8.display();
+		image(ghost,xpos,ypos,80,80);
+		if (box !=false){
+			fill(0);
+			rect(width/2,height/2,600,150);
+		}
+		if (text801 == true){
+			type("Die for us! Flying away;\n\nliving until\n\nthere is nothing left",width/2,height/2-30)
+		}
+	}
+
+
+	//displays effects on page 9, "face your reality"
+	if (page == 9){
+		for (let i = 0; i < video.height/60; i++) {
+			drawStreak()
+		}
+		fill(0);
+		rect(width/10-30,height/2,200,height);
+		rect(width-100,height/2,200,height);
+		rect(width/2,height/2,600,150);
+		type("...once awakened,\n\nit is but\n\nan illusion that vanishes.",width/2,height/2-30);
+		countdown();
+		//console.log(timer);
+	}
+
+	//credits/ending page
+	if (page == 10){
+		background(0);
+		type("intentional unintended poetry\n\nby phoebe yin",width/2,height/2);
+		timer = 10;
+		
+	}
+	console.log(timer)
 }
