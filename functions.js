@@ -64,28 +64,28 @@ function start(){
 	}
 }
 
-//only for testing
-function testing(){
-	if (keyIsDown(49)){
-		page = 1;
-	}else if (keyIsDown(50)){
-		page = 2;
-	}else if (keyIsDown(51)){
-		page = 3;
-	}else if (keyIsDown(52)){
-		page = 4;
-	}else if (keyIsDown(53)){
-		page = 5;
-	}else if (keyIsDown(54)){
-		page = 6;
-	}else if (keyIsDown(55)){
-		page = 7;
-	}else if (keyIsDown(56)){
-		page = 8;
-	}else if (keyIsDown(57)){
-		page = 9;
-	}
-}
+// //only for testing
+// function testing(){
+// 	if (keyIsDown(49)){
+// 		page = 1;
+// 	}else if (keyIsDown(50)){
+// 		page = 2;
+// 	}else if (keyIsDown(51)){
+// 		page = 3;
+// 	}else if (keyIsDown(52)){
+// 		page = 4;
+// 	}else if (keyIsDown(53)){
+// 		page = 5;
+// 	}else if (keyIsDown(54)){
+// 		page = 6;
+// 	}else if (keyIsDown(55)){
+// 		page = 7;
+// 	}else if (keyIsDown(56)){
+// 		page = 8;
+// 	}else if (keyIsDown(57)){
+// 		page = 9;
+// 	}
+// }
 
 function drawStreak() {
 	let y = floor(random(height));
