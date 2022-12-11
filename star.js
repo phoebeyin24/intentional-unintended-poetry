@@ -20,5 +20,4 @@ class star{
 		fill(255)
 		square(this.x,this.y,random(2,5))
 	}
-	
 }

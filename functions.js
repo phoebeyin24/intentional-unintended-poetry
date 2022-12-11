@@ -24,13 +24,13 @@ function imgcontrol(){
 	}else if (page == 4){
 		image(page4,width/2,height/2,1280,720);	
 	}else if (page ==5){
-		background(50);
+		image(page5,width/2,height/2,1280,720);
 	}else if (page ==6){
-		background(20);
+		image(page6,width/2,height/2,1280,720);
 	}else if (page == 7){
-		background(30)
+		background(122, 82, 7);
 	}else if (page == 8){
-		background(40);
+		image(page8,width/2,height/2,1280,720);
 	}else if (page ==9){
 		background (0);
 	}

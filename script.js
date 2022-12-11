@@ -13,7 +13,7 @@
 //variables for player
 let xpos = 1100;
 let ypos = 600;
-let movespd = 30;
+let movespd = 10;
 let playerwidth = 50;
 let playerheight = 50;
 
@@ -41,9 +41,12 @@ let n = 0
 let text401 = false;
 //let bump401 = false;
 
+//page 5 
+
 //page 6 variables
 let text601 = false;
 let text602 = false;
+
 
 //page 8 variables
 let text801 = false;
@@ -65,6 +68,10 @@ let page1;
 let page2;
 let page3;
 let page4;
+let page5;
+let page6;
+let page7;
+let page8;
 let statue;
 let ghost;
 let e1;
@@ -76,13 +83,26 @@ let umbrella;
 let typingsd;
 let window1;
 let darkghost;
-
+let exit4;
+let ladder;
+let shark2img;
+let shark1img;
+let model;
+let jayden;
+let ghostback;
+let moony;
+let earth;
 
 function preload(){
+	//image
 	page1 = loadImage('images/page1-1.png')
 	page2 = loadImage('images/page2-1.png')
 	page3 = loadImage('images/page3-1.png')
 	page4 = loadImage('images/page4-1.png')
+	page5 = loadImage('images/page5-1.png')
+	page6 = loadImage('images/page6-1.png')
+	page7 = loadImage('images/page7-1.png')
+	page8 = loadImage('images/page8-1.gif')
 	statue = loadImage('images/broken statue.png')
 	ghost = loadImage('images/ghost.png')
 	pixel = loadFont('font/PressStart2P-Regular.ttf')
@@ -95,9 +115,28 @@ function preload(){
 	umbrella = loadImage('images/umbrella.png')
 	window1 = loadImage('images/window1.png')
 	darkghost = loadImage('images/darkghost.png')
+	e4 = loadImage('images/exit4.png')
+	ladder = loadImage('images/ladder.png')
+	flowerl = loadImage('images/flower-l.gif')
+	flowerr = loadImage('images/flower-r.gif')
+	flower = loadImage('images/flower.gif')
+	e5 = loadImage('images/exit5.png')
+	e6 = loadImage('images/exit6.png')
+	shark2img = loadImage('images/shark2.png')
+	shark1img = loadImage('images/shark1.png')
+	model = loadImage('images/model.png')
+	jayden =  loadImage('images/jayden.png')
+	ghostback = loadImage('images/ghostback.png')
+	moony = loadImage('images/moony.png')
+	earth = loadImage('images/earth.png')
+	e8 = loadImage('images/jelly.png')
+
+
+	
+	//sound
+	music = loadSound('sound/thecodeofmyheart.mp3')
 	typingsd = loadSound("sound/click.wav");
 	
-	music = loadSound('sound/thecodeofmyheart.mp3')
 	
 	
 }
@@ -118,13 +157,13 @@ function setup() {
 
 	
 	//instaces on page 1
-	obs1 = new obstacle(700,600,120,120);
-	obs2 = new obstacle(400,350,70,70);
-	obs3 = new obstacle(820,200,50,50);
+	obs1 = new obstacle(lotus,700,600,120,120);
+	obs2 = new obstacle(lotus,400,350,70,70);
+	obs3 = new obstacle(lotus,820,200,50,50);
 	exit1 = new exit(645,75,60,60);
 	
   //instances on page 2
-	heart = new obstacle(width/2,300,80,80);
+	heart = new obstacle(heartimg,width/2,300,80,80);
 	exit2 = new exit(width/2, 620,130,130);
 	for(let i = 0; i<100; i++){
     stars[i] = new star(random(width),random(height),random(-PI,PI),random(0.1,2));
@@ -134,23 +173,23 @@ function setup() {
 	exit3 = new exit(100,80,80,80);
 	
 	//instances on page 4
-	puddle = new obstacle(1000,550,300,300);
-	exit4 = new exit(1200,100,60,80);
+	puddle = new obstacle(pool,1000,550,300,300);
+	exit4 = new exit(1150,100,200,200);
 
 	//instances on page 5
-	exit5 = new exit(1100,650,200,300);
+	exit5 = new exit(1070,620,384,200);
 
 	//instances on page 6
-	shark1 = new obstacle(400,500,100,100);
-	shark2 = new obstacle(800,500,100,100);
-	exit6 = new exit(50,50,50,50);
+	shark1 = new obstacle(shark1img,400,500,300,300);
+	shark2 = new obstacle(shark2img,900,500,300,300);
+	exit6 = new exit(30,23,94,46);
 
 	//instances on page 7
 	exit7 = new exit(1100,600,100,100);
 
 	//instances on page 8
-	someone = new obstacle(width/2,600,50,50);
-	exit8 = new exit(1000,100,70,70);
+	someone = new obstacle(ghostback,width/2,600,67,80);
+	exit8 = new exit(120,150,250,250);
 
 
 
@@ -173,6 +212,7 @@ function draw() {
 			if (music.isPlaying() == false){
 			music.setVolume(0.3);
 			music.play();
+			music.loop();
 		   }
 		}
 	}
@@ -247,7 +287,13 @@ function draw() {
 
     if (page == 5){
 		exit5.display();
+		image(flowerr,120,50,198,254.5);
+		//image(flowerl,1200,50);
+		image(ladder,1100,100);
+		image(flower,width/2-40,580);
+		image(flower,50,820);
     	image(ghost,xpos,ypos,80,80);
+		image(flowerl,1200,50);
 		fill(0);
 		rect(width/2,height/2,600,150);
 		type("The road to home...\n\nThe road to home...",width/2,height/2-10)
@@ -258,6 +304,12 @@ function draw() {
 		shark1.display();
 		shark2.display();
 		exit6.display();
+		image(jayden,915,410,210,65)
+		push();
+		//translate(width / 2, height / 2);
+		rotate(PI / 3.5);
+		image(model,640,-50,83.3,207.7)
+		pop();
 		image(ghost,xpos,ypos,80,80);
 		if (box !=false){
 			fill(0);
@@ -275,11 +327,15 @@ function draw() {
 	if (page == 7){
 		exit7.display();
 		image(ghost,xpos,ypos,80,80);
+		image(page7,width/2,height/2,1280,720);
 	}
 
 
 	//displays objects on page 8, "moony"
 	if (page==8){
+		image(earth,width/2,height/2,1280,720);
+		image(moony,width/2,-50,1200,1200);
+		image(e8,220,10,150,150)
 		someone.display();
 		exit8.display();
 		image(ghost,xpos,ypos,80,80);
@@ -314,5 +370,5 @@ function draw() {
 		timer = 10;
 		
 	}
-	console.log(timer)
+	console.log(page)
 }

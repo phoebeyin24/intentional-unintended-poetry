@@ -203,29 +203,31 @@ function userCollide(){
 		 n = -1;
 		 box = false;
         }
-		if (xpos>exit4.x-exit4.w && xpos<exit4.x+exit4.w && ypos>exit4.y-exit4.h && ypos<exit4.y+exit4.h){
+		if (xpos>exit4.x-exit4.w+150&& xpos<exit4.x+exit4.w-200 && ypos>exit4.y-exit4.h && ypos<exit4.y+exit4.h-150){
 			page = 5;
 		}
     }
 
 	//this if statement contains collision checking for objects on page 5
     if (page ==5){
-		if (xpos>exit5.x-exit5.w && xpos<exit5.x+exit5.w && ypos>exit5.y-exit5.h && ypos<exit5.y+exit5.h){
+		if (xpos>exit5.x-exit5.w && xpos<exit5.x+exit5.w && ypos>exit5.y-exit5.h+150 && ypos<exit5.y+exit5.h){
 			page = 6;
 		}
 	}
 
 	//this if statement contains collision checking for objects on page 6
 	if (page == 6){
-		if (xpos>=shark2.x-shark2.w && xpos<=shark2.x+shark2.w && ypos>=shark2.y-shark2.h && ypos<=shark2.y+shark2.h){
+		if (xpos>=shark2.x-shark2.w+150&& xpos<=shark2.x+shark2.w-150 && ypos>=shark2.y-shark2.h && ypos<=shark2.y+shark2.h){
 			text602 = true;
 			text601 = false;
 			box = true;
+			
 			//console.log("bump")
-		}else if(xpos>=shark1.x-shark1.w && xpos<=shark1.x+shark1.w && ypos>=shark1.y-shark1.h && ypos<=shark1.y+shark1.h){
+		}else if(xpos>=shark1.x-shark1.w+150 && xpos<=shark1.x+shark1.w-150 && ypos>=shark1.y-shark1.h && ypos<=shark1.y+shark1.h){
             text602 = false;
 			text601 = true;
 			box = true;
+			
 		}else{
 			n = -1;
 			box = false;
@@ -273,7 +275,7 @@ function userCollide(){
 		  //console.log("down");
 			}
 		}
-		if (xpos>exit8.x-exit8.w && xpos<exit8.x+exit8.w && ypos>exit8.y-exit8.h && ypos<exit8.y+exit8.h){
+		if (xpos>exit8.x-exit8.w+150 && xpos<exit8.x+exit8.w-150 && ypos>exit8.y-exit8.h+150 && ypos<exit8.y+exit8.h-150){
 			page = 9;
 			
 		}

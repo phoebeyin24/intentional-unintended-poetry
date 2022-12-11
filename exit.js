@@ -21,18 +21,16 @@ class exit{
 			
 			image(e3,this.x,this.y,this.w,this.h)
 		}else if (page == 4){
-			rect(this.x,this.y,this.w,this.h)
+			image(e4,this.x,this.y,this.w,this.h)
 		}else if (page == 5){
-			rect(this.x,this.y,this.w,this.h)
+			image(e5,this.x,this.y,this.w,this.h)
 		}else if (page ==6){
-			fill(0,128,0)
-			rect(this.x,this.y,this.w,this.h)
+			image(e6,this.x,this.y,this.w,this.h)
 		}else if (page == 7){
-			fill(0,255,0)
+			fill(0,255,0,0)
 			rect(this.x,this.y,this.w,this.h)
 		}else if (page == 8){
-			fill(0)
-			rect(this.x,this.y,this.w,this.h)
+			image(e8,this.x,this.y,this.w,this.h)
 		}
 	}
 	
