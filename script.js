@@ -199,7 +199,7 @@ function setup() {
 
 function draw() {
 	//function for faster access to pages when testing
-	testing();
+	//testing();
 	
 	imgcontrol();	
 	
